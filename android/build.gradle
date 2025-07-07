@@ -1,0 +1,34 @@
+buildscript {
+    ext.kotlin_version = '2.0.0'
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Update the Gradle plugin version as needed
+        classpath 'com.android.tools.build:gradle:8.6.0'
+        // Add the Google services classpath for Firebase integration
+        classpath 'com.google.gms:google-services:4.4.2'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+// Define the directory for the build outputs
+rootProject.buildDir = '../build'
+
+// Configure subprojects' build directories
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+    project.evaluationDependsOn(':app')
+}
+
+// Register a clean task to delete the build directory
+tasks.register('clean', Delete) {
+    delete rootProject.buildDir
+}
