@@ -1,0 +1,5 @@
+name: uni_links
+description: Custom uni_links plugin for deep linking
+version: 0.0.1
+environment:
+  sdk: ">=3.6.0 <4.0.0"
